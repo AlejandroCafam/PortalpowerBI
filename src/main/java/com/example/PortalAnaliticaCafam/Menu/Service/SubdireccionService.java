@@ -1,6 +1,7 @@
 package com.example.PortalAnaliticaCafam.Menu.Service;
 import com.example.PortalAnaliticaCafam.Menu.Entity.Subdireccion;
 import com.example.PortalAnaliticaCafam.Menu.Repository.SubdireccionRepository;
+import com.example.PortalAnaliticaCafam.Tablero.Entity.Tablero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -32,6 +33,15 @@ public class SubdireccionService {
 
     public void eliminarSubdireccion(Long id) {
         subdireccionRepository.deleteById(id);
+    }
+
+    /*public List<Subdireccion> findSubdireccionesByParentId(Long parentId) {
+        return subdireccionRepository.findById_Padre(parentId);
+    }*/
+
+    public List<Subdireccion> findHijosByPadreId(Long idPadre) {
+        List<Subdireccion> hijos = subdireccionRepository.findHijosByPadreId(idPadre);
+        return hijos;
     }
 }
 

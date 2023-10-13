@@ -70,4 +70,16 @@ public class TableroController {
             throw new SubdireccionNotFoundException("Subdireccion con ID " + subdireccionId + " no encontrada");
         }
     }*/
+    @GetMapping("/by-subdireccion/{subdireccionId}")
+    public ResponseEntity<List<Tablero>> getTablerosBySubdireccion(@PathVariable Long subdireccionId) {
+        Subdireccion subdireccion = subdireccionService.obtenerSubdireccionPorId(subdireccionId).orElse(null);
+        if (subdireccion != null) {
+            List<Tablero> tableros = tableroService.getTablerosBySubdireccion(subdireccion);
+
+            return new ResponseEntity<>(tableros, HttpStatus.OK);
+        } else {
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

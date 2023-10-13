@@ -24,7 +24,7 @@ public class Tablero {
     private String vinculo;
     @ManyToOne
     @JoinColumn(name = "id_sub", nullable = false)
-    private Subdireccion subdireccion;
+    private Subdireccion id_sub;
 
 }
 

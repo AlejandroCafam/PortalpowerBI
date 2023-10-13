@@ -33,7 +33,7 @@ public class TableroService {
             existingTablero.setReporte(tableroDetails.getReporte());
             existingTablero.setDescripcion(tableroDetails.getDescripcion());
             existingTablero.setVinculo(tableroDetails.getVinculo());
-            existingTablero.setSubdireccion(tableroDetails.getSubdireccion());
+            existingTablero.setId_sub(tableroDetails.getId_sub());
             return tableroRepository.save(existingTablero);
         }
         return null;

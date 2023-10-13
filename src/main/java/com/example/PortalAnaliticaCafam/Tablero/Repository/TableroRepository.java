@@ -10,6 +10,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface TableroRepository extends JpaRepository<Tablero, Integer> {
-    @Query("SELECT t FROM Tablero t WHERE t.subdireccion = :subdireccion")
+    @Query("SELECT t FROM Tablero t WHERE t.id_sub = :subdireccion")
     List<Tablero> findBySubdireccion(@Param("subdireccion") Subdireccion subdireccion);
 }

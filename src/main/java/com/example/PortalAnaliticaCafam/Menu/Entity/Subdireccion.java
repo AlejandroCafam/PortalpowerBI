@@ -19,14 +19,14 @@ public class Subdireccion {
     @Column(name = "id_sub", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion",nullable = false)
     private String descripcion;
 
     @ManyToOne
     @JoinColumn(name = "id_padre")
-    private Subdireccion padre;
+    private Subdireccion padre; //relación recursiva
 
-    @Column(name = "estado")
+    @Column(name = "estado",nullable = false)
     private int estado; // 1 o 0 para decir si está o no activo
 
 }

@@ -1,6 +1,7 @@
 package com.example.PortalAnaliticaCafam.Menu.Controller;
 import com.example.PortalAnaliticaCafam.Menu.Entity.Subdireccion;
 import com.example.PortalAnaliticaCafam.Menu.Service.SubdireccionService;
+import com.example.PortalAnaliticaCafam.Tablero.Entity.Tablero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -78,4 +79,17 @@ public class SubdireccionController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/hijos/{idPadre}")
+    public ResponseEntity<List<Subdireccion>> getHijosByPadreId(@PathVariable Long idPadre) {
+        List<Subdireccion> hijos = subdireccionService.findHijosByPadreId(idPadre);
+        if (!hijos.isEmpty()){
+            return new ResponseEntity<>(hijos,HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+
 }

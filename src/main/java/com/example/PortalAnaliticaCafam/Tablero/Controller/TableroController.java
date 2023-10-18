@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/tablero")
 public class TableroController {
@@ -60,16 +60,6 @@ public class TableroController {
         }
 
     }
-    /*@GetMapping("/by-subdireccion/{subdireccionId}")
-    public ResponseEntity<Optional<Tablero>> getTablerosBySubdireccion(@PathVariable Long subdireccionId) {
-        Optional<Subdireccion> subdireccion = Optional.ofNullable(subdireccionService.obtenerSubdireccionPorId(subdireccionId).orElse(null));
-        if (subdireccion != null) {
-            return new ResponseEntity<>(subdireccion,HttpStatus.OK);
-        } else {
-            // Manejar el caso en el que la Subdireccion no existe
-            throw new SubdireccionNotFoundException("Subdireccion con ID " + subdireccionId + " no encontrada");
-        }
-    }*/
     @GetMapping("/by-subdireccion/{subdireccionId}")
     public ResponseEntity<List<Tablero>> getTablerosBySubdireccion(@PathVariable Long subdireccionId) {
         Subdireccion subdireccion = subdireccionService.obtenerSubdireccionPorId(subdireccionId).orElse(null);
